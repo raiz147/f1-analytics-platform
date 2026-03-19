@@ -1,6 +1,6 @@
 # F1 Analytics Platform
 
-Production-ready Formula 1 data platform for ingesting, processing, and visualizing race data using Python, PostgreSQL, Node.js, and React.
+Formula 1 data platform for ingesting, processing, and visualizing race data using Python, PostgreSQL, Node.js, and React.
 
 ---
 
