@@ -1,0 +1,22 @@
+name: Deploy
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger Render API deploy
+        if: ${{ secrets.RENDER_API_DEPLOY_HOOK_URL != '' }}
+        run: curl -fsS -X POST "${{ secrets.RENDER_API_DEPLOY_HOOK_URL }}"
+
+      - name: Trigger Render pipeline deploy
+        if: ${{ secrets.RENDER_PIPELINE_DEPLOY_HOOK_URL != '' }}
+        run: curl -fsS -X POST "${{ secrets.RENDER_PIPELINE_DEPLOY_HOOK_URL }}"
+
+      - name: Trigger Vercel frontend deploy
+        if: ${{ secrets.VERCEL_FRONTEND_DEPLOY_HOOK_URL != '' }}
+        run: curl -fsS -X POST "${{ secrets.VERCEL_FRONTEND_DEPLOY_HOOK_URL }}"
